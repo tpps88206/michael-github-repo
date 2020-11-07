@@ -18,3 +18,11 @@ $ cd github-repo/
 $ yarn install
 $ yarn start
 ```
+
+## Reference
+
+* [Search repositories](https://docs.github.com/en/free-pro-team@latest/rest/reference/search#search-repositories--code-samples)
+* [Constructing a search query](https://docs.github.com/en/free-pro-team@latest/rest/reference/search#constructing-a-search-query)
+* [Searching for repositories](https://docs.github.com/en/free-pro-team@latest/github/searching-for-information-on-github/searching-for-repositories)
+* [Understanding the search syntax](https://docs.github.com/en/free-pro-team@latest/github/searching-for-information-on-github/understanding-the-search-syntax)
+* [Rate limit](https://docs.github.com/en/free-pro-team@latest/rest/reference/search#rate-limit)

@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { render } from '@/utils/test-utils';
-import NotFound from './index';
+import Search from './index';
 
-it('renders NotFound without crashing', () => {
+it('renders Search without crashing', () => {
   const div = document.createElement('div');
-  render(<NotFound />, div);
+  render(<Search />, div);
 });
 
-it('renders NotFound with snapshot', () => {
-  const { asFragment } = render(<NotFound />);
+it('renders Search with snapshot', () => {
+  const { asFragment } = render(<Search />);
   expect(asFragment()).toMatchSnapshot();
 });

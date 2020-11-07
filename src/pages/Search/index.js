@@ -5,9 +5,9 @@ import { makeStyles } from '@material-ui/styles';
 import styles from './styles';
 const useStyles = makeStyles(styles);
 
-const NotFound = () => {
+const Search = () => {
   const classes = useStyles();
   return <div className={classes.root} />;
 };
 
-export default NotFound;
+export default Search;
