@@ -84,7 +84,10 @@
       "src/components/**/*.js",
       "src/pages/**/*.js",
       "!src/**/styles.js"
-    ]
+    ],
+    "moduleNameMapper": {
+      "@/(.*)": "<rootDir>/src/$1"
+    }
   },
   "homepage": "https://tpps88206.github.io/github-repo"
 }

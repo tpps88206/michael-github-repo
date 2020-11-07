@@ -1,19 +1,36 @@
-import './index.css';
-
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { create } from 'jss';
+import preset from 'jss-preset-default';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { createMuiTheme, StylesProvider, ThemeProvider } from '@material-ui/core/styles';
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+import App from '@/App';
+import theme from '@/constants/theme';
+import styles from '@/styles';
+
+// A theme with custom primary and secondary color.
+const muiTheme = createMuiTheme(theme);
+
+// replace material jss plugins with jss-preset-default
+const jss = create({
+  plugins: [...preset().plugins],
+});
+
+// create global styles
+jss.createStyleSheet(styles(muiTheme), { meta: 'global' }).attach();
+
+const root = document.getElementById('root');
+
+!!root &&
+  render(
+    <StylesProvider jss={jss}>
+      <ThemeProvider theme={muiTheme}>
+        <CssBaseline />
+        <App />
+      </ThemeProvider>
+    </StylesProvider>,
+    root,
+  );

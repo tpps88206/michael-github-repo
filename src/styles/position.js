@@ -1,0 +1,17 @@
+export default {
+  '.position-static': {
+    position: 'static',
+  },
+  '.position-relative': {
+    position: 'relative',
+  },
+  '.position-absolute': {
+    position: 'absolute',
+  },
+  '.position-fixed': {
+    position: 'fixed',
+  },
+  '.position-sticky': {
+    position: 'sticky',
+  },
+};
