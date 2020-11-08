@@ -5,12 +5,12 @@ import { PER_PAGE } from '@/constants/config';
 import { PAGE_KEY, PER_PAGE_KEY, QUERY_KEY } from '@/constants/variables';
 import { getHeaders } from './utils';
 
-export const searchRepositories = ({ keywords, page }) => {
+export const searchRepositories = ({ inputValue, page }) => {
   // Set API path
   let path = '/search/repositories';
 
   // SeT the keywords for query
-  path = `${path}?${QUERY_KEY}=${keywords}`;
+  path = `${path}?${QUERY_KEY}=${inputValue}`;
 
   // Set page number of the results to fetch.
   if (page) {

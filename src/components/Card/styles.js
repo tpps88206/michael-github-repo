@@ -1,11 +1,7 @@
 const styles = theme => ({
   root: {
-    maxWidth: 345,
+    maxWidth: 600,
     margin: 12,
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
   },
   expand: {
     transform: 'rotate(0deg)',

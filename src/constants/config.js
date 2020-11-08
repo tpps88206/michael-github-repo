@@ -12,3 +12,4 @@ export const SEARCH_DATA_PICKERS = [
   'watchers',
 ];
 export const UPDATED_TIME_FORMAT = 'yyyy年M月d日 HH:mm:ss';
+export const WAIT_DURATION = 300;

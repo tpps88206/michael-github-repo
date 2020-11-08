@@ -62,8 +62,8 @@ export const {
 
 export const epics = {
   searchRepositories: (action$, state$, action) => {
-    const { keywords, page } = action.payload;
-    return api.searchRepositories({ keywords, page }).pipe(
+    const { inputValue, page } = action.payload;
+    return api.searchRepositories({ inputValue, page }).pipe(
       map(res => searchRepositoriesFulfilled(res)),
       catchError(error => of(searchRepositoriesRejected({ type: action.type, error }))),
       takeUntil(action$.pipe(ofType(searchRepositoriesCancelled.type))),

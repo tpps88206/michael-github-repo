@@ -42,22 +42,10 @@ exports[`renders SearchPage with snapshot 1`] = `
           </form>
         </div>
         <div>
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-            tabindex="0"
-            type="button"
-          >
-            <span
-              class="MuiButton-label"
-            >
-              Search
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-justify-xs-center"
+          />
         </div>
-        <div />
       </div>
     </section>
   </main>
