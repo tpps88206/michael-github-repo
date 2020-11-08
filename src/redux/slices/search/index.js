@@ -1,12 +1,14 @@
 import { ofType } from 'redux-observable';
 
 import isEmpty from 'lodash/isEmpty';
+import pick from 'lodash/pick';
 import { of } from 'rxjs';
 import { catchError, map, takeUntil } from 'rxjs/operators';
 
 import { createSlice } from '@reduxjs/toolkit';
 
 import api from '@/api';
+import { SEARCH_DATA_PICKERS } from '@/constants/config';
 
 const initialState = {
   data: {
@@ -32,7 +34,9 @@ const slice = createSlice({
       if (!isEmpty(response)) {
         const { total_count, items } = response;
         state.data.total_count = total_count;
-        state.data.items = items;
+        state.data.items = items.map(item => {
+          return pick(item, SEARCH_DATA_PICKERS);
+        });
       } else {
         state.data.total_count = 0;
         state.data.items = [];

@@ -23,7 +23,7 @@ export const searchRepositories = ({ keywords, page }) => {
   // Fire API
   return ajax({
     method: 'GET',
-    url: new URL(path, common.api_proxy_uri),
+    url: common.api_proxy_uri + `${path}`,
     headers: getHeaders(),
   });
 };

@@ -1,6 +1,7 @@
 const styles = theme => ({
   root: {
     maxWidth: 345,
+    margin: 12,
   },
   media: {
     height: 0,
