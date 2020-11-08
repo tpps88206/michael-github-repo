@@ -13,7 +13,7 @@ const theme = {
       main: '#FF3B30',
     },
     background: {
-      default: '#fff',
+      default: '#bdced8',
     },
     link: {
       main: '#11456C',

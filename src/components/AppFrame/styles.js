@@ -10,7 +10,7 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     overflowX: 'auto',
-    backgroundColor: 'white',
+    backgroundColor: theme.palette.background.default,
     height: '100%',
     position: 'relative',
   },
@@ -18,6 +18,7 @@ const styles = theme => ({
     boxShadow: 'none',
     zIndex: 1300,
     height: 72,
+    borderBottom: `1px solid ${theme.palette.primary.main}`,
   },
 });
 
