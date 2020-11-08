@@ -3,10 +3,11 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
 import AppFrame from '@/components/AppFrame';
 import NotFound from '@/pages/NotFound';
-import SearchPage from '@/pages/Search';
+import SearchPage from '@/pages/SearchPage';
 
 const ErrorRouter = () => {
   const { url } = useRouteMatch();
+
   return (
     <AppFrame>
       <Switch>

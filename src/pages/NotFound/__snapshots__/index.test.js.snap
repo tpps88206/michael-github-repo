@@ -2,14 +2,22 @@
 
 exports[`renders NotFound with snapshot 1`] = `
 <DocumentFragment>
-  <div
-    class="mt-2"
+  <main
+    class="makeStyles-root-3 px-3 mt-9"
   >
-    <h5
-      class="MuiTypography-root MuiTypography-h5"
+    <section
+      class="makeStyles-root-4 "
     >
-      Page Not Found
-    </h5>
-  </div>
+      <div
+        class="mt-2"
+      >
+        <h5
+          class="MuiTypography-root MuiTypography-h5"
+        >
+          Page Not Found
+        </h5>
+      </div>
+    </section>
+  </main>
 </DocumentFragment>
 `;

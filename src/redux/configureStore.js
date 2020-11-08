@@ -13,6 +13,7 @@ const epicMiddleware = createEpicMiddleware();
 
 const configureStore = () => {
   const flavor = process.env.REACT_APP_FLAVOR;
+  console.warn('React app flavor is setting at: ' + flavor);
 
   const store = createStore(
     createRootReducer(history),

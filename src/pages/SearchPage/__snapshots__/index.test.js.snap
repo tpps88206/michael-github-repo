@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders SearchPage with snapshot 1`] = `
+<DocumentFragment>
+  <main
+    class="makeStyles-root-5 px-3 mt-9"
+  >
+    <section
+      class="makeStyles-root-6 "
+    >
+      <div
+        class="makeStyles-root-4"
+      >
+        <div>
+          <form
+            autocomplete="off"
+            novalidate=""
+          >
+            <div
+              class="MuiFormControl-root MuiTextField-root"
+            >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+                data-shrink="false"
+                for="search-keywords"
+                id="search-keywords-label"
+              >
+                Keywords
+              </label>
+              <div
+                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiInput-input"
+                  id="search-keywords"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Search
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <div />
+      </div>
+    </section>
+  </main>
+</DocumentFragment>
+`;

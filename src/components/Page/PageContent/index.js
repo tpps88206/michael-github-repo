@@ -5,9 +5,9 @@ import { makeStyles } from '@material-ui/styles';
 import styles from './styles';
 const useStyles = makeStyles(styles);
 
-const Search = () => {
+const PageContent = ({ children, className = '' }) => {
   const classes = useStyles();
-  return <div className={classes.root} />;
+  return <section className={`${classes.root} ${className}`}>{children}</section>;
 };
 
-export default Search;
+export default PageContent;
