@@ -24,7 +24,7 @@ const SearchPage = () => {
 
   const [inputValue, setInputValue] = useState('');
 
-  const data = useSelector(state => state.search.data);
+  const items = useSelector(state => state.search.items);
   const isLoading = useSelector(state => state.search.isLoading);
 
   const timerRef = useRef(void 0); // Set the timer to watch the gap of user input
@@ -68,6 +68,7 @@ const SearchPage = () => {
         dispatch(loadMoreRepositories());
       }
     });
+    return false;
   };
 
   return (
@@ -75,25 +76,23 @@ const SearchPage = () => {
       <PageContent>
         <div className={classes.root}>
           <div>
-            <form noValidate autoComplete="off">
-              <TextField
-                id="inputValue"
-                label="搜尋"
-                variant="outlined"
-                value={inputValue}
-                onChange={handleChangeInputValue}
-                fullWidth
-                margin="normal"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </form>
+            <TextField
+              id="inputValue"
+              label="搜尋"
+              variant="outlined"
+              value={inputValue}
+              onChange={handleChangeInputValue}
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
           </div>
           <div>
             <Grid container spacing={1} justify="center">
-              {!!data &&
-                data.items.map(item => (
+              {!!items &&
+                items.map(item => (
                   <Card
                     key={shortid.generate()}
                     fullName={item.full_name}

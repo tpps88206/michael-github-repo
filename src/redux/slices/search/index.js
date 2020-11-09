@@ -14,12 +14,14 @@ import { PER_PAGE, SEARCH_DATA_PICKERS } from '@/constants/config';
 const initialState = {
   inputValue: '', // input value for searching
   page: 1, // current page number
-  data: {
-    totalCount: 0, // save number of the total result count
-    items: [], // pick specified key of result and save it
-  },
+  totalCount: 0, // save number of the total result count
+  items: [], // pick specified key of result and save it
   isLoading: false,
   isMoreData: false,
+  // code = 0 : no action is executing
+  // code = 1 : action is executing now
+  // code > 1 : duplicated actions are executing, need to reject some action
+  lockingCode: 0,
 };
 
 const slice = createSlice({
@@ -41,15 +43,15 @@ const slice = createSlice({
       if (!isEmpty(response)) {
         const { total_count, items } = response;
 
-        state.data.totalCount = total_count;
-        state.data.items = items.map(item => {
+        state.totalCount = total_count;
+        state.items = items.map(item => {
           return pick(item, SEARCH_DATA_PICKERS);
         });
 
         state.isMoreData = total_count > PER_PAGE;
       } else {
-        state.data.totalCount = 0;
-        state.data.items = [];
+        state.totalCount = 0;
+        state.items = [];
         state.isMoreData = false;
       }
 
@@ -63,6 +65,7 @@ const slice = createSlice({
     },
     loadMoreRepositories: (state, action) => {
       state.page = state.page + 1;
+      state.lockingCode = state.lockingCode + 1;
       state.isLoading = true;
     },
     loadMoreRepositoriesFulfilled: (state, action) => {
@@ -71,26 +74,29 @@ const slice = createSlice({
       if (!isEmpty(response)) {
         const { items } = response;
 
-        state.data.items = concat(
-          state.data.items,
+        state.items = concat(
+          state.items,
           items.map(item => {
             return pick(item, SEARCH_DATA_PICKERS);
           }),
         );
 
-        state.isMoreData = state.data.totalCount > (state.page - 1) * PER_PAGE + items.length;
+        state.isMoreData = state.totalCount > (state.page - 1) * PER_PAGE + items.length;
       } else {
         // The api status is ok but did not get the response successfully
         state.page = state.page - 1;
       }
+      state.lockingCode = state.lockingCode - 1;
       state.isLoading = false;
     },
     loadMoreRepositoriesRejected: (state, action) => {
       state.page = state.page - 1;
+      state.lockingCode = state.lockingCode - 1;
       state.isLoading = false;
     },
     loadMoreRepositoriesCancelled: (state, action) => {
       state.page = state.page - 1;
+      state.lockingCode = state.lockingCode - 1;
       state.isLoading = false;
     },
   },
@@ -111,6 +117,7 @@ export const {
 export const epics = {
   searchRepositories: (action$, state$, action) => {
     const { inputValue, page } = action.payload;
+
     if (!inputValue) {
       return of(searchRepositoriesRejected({ type: action.type }));
     }
@@ -125,7 +132,13 @@ export const epics = {
     const inputValue = state$.value.search.inputValue;
     const page = state$.value.search.page;
     const isMoreData = state$.value.search.isMoreData;
+    const lockingCode = state$.value.search.lockingCode;
+
     if (!inputValue || !isMoreData) {
+      return of(loadMoreRepositoriesRejected({ type: action.type }));
+    }
+
+    if (lockingCode > 1) {
       return of(loadMoreRepositoriesRejected({ type: action.type }));
     }
 

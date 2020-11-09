@@ -14,6 +14,7 @@ const styles = theme => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
+    color: 'white',
     backgroundColor: theme.palette.primary.main,
   },
 });
