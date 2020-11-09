@@ -26,3 +26,4 @@ $ yarn start
 * [Searching for repositories](https://docs.github.com/en/free-pro-team@latest/github/searching-for-information-on-github/searching-for-repositories)
 * [Understanding the search syntax](https://docs.github.com/en/free-pro-team@latest/github/searching-for-information-on-github/understanding-the-search-syntax)
 * [Rate limit](https://docs.github.com/en/free-pro-team@latest/rest/reference/search#rate-limit)
+* [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)

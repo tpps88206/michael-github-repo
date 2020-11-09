@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/styles';
 import Card from '@/components/Card';
 import Page from '@/components/Page';
 import PageContent from '@/components/Page/PageContent';
-import { UPDATED_TIME_FORMAT, WAIT_DURATION } from '@/constants/config';
+import { INTERSECTION_OBSERVER_OPTIONS, UPDATED_TIME_FORMAT, WAIT_DURATION } from '@/constants/config';
 import { loadMoreRepositories, searchRepositories } from '@/redux/slices/search';
 import styles from './styles';
 const useStyles = makeStyles(styles);
@@ -28,14 +28,9 @@ const SearchPage = () => {
   const loader = useRef(null); // Add loader reference
 
   useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '20px',
-      threshold: 1.0,
-    };
     // initialize IntersectionObserver
     // and attaching to Load More div
-    const observer = new IntersectionObserver(handleObserver, options);
+    const observer = new IntersectionObserver(handleObserver, INTERSECTION_OBSERVER_OPTIONS);
     if (loader.current) {
       observer.observe(loader.current);
     }
