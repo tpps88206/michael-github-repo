@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import format from 'date-fns/format';
 import shortid from 'shortid';
 
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/styles';
@@ -24,22 +25,21 @@ const SearchPage = () => {
   const [inputValue, setInputValue] = useState('');
 
   const data = useSelector(state => state.search.data);
+  const isLoading = useSelector(state => state.search.isLoading);
 
   const timerRef = useRef(void 0); // Set the timer to watch the gap of user input
   const executedMapRef = useRef(''); // Set the map to record the input value, avoid duplicated searching
-  const loader = useRef(null); // Add loader element reference
+  const footerRef = useRef(null); // Add footer element reference
 
   useEffect(() => {
     // initialize IntersectionObserver
     // and attaching to Load More div
     const observer = new IntersectionObserver(handleObserver, INTERSECTION_OBSERVER_OPTIONS);
-    if (loader.current) {
-      observer.observe(loader.current);
+    if (footerRef.current) {
+      observer.observe(footerRef.current);
     }
   }, []);
 
-  // TODO: fix too much event in same time
-  // TODO: fix fire the event before search
   const handleChangeInputValue = event => {
     const inputValue = event.target.value;
     setInputValue(inputValue);
@@ -64,7 +64,7 @@ const SearchPage = () => {
     entries.forEach(entry => {
       // How much of the target element is currently visible within the root's intersection ratio
       // Setting this can avoid calling duplicated action when element move out the windows (intersectionRatio = 0)
-      if (entry.intersectionRatio > 0) {
+      if (entry.intersectionRatio === 1) {
         dispatch(loadMoreRepositories());
       }
     });
@@ -94,7 +94,6 @@ const SearchPage = () => {
             <Grid container spacing={1} justify="center">
               {!!data &&
                 data.items.map(item => (
-                  // TODO: duplicated key issue
                   <Card
                     key={shortid.generate()}
                     fullName={item.full_name}
@@ -109,9 +108,12 @@ const SearchPage = () => {
                 ))}
             </Grid>
           </div>
-          <div ref={loader}>
-            <h2>Load More</h2>
-          </div>
+          <div className={classes.footer} ref={footerRef} />
+          {isLoading && (
+            <div className="my-2 justify-center d-flex">
+              <CircularProgress />
+            </div>
+          )}
         </div>
       </PageContent>
     </Page>

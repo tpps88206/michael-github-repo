@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/styles';
 
 import logo from '@/assets/logo.svg';
 import styles from './styles';
+
 const useStyles = makeStyles(styles);
 
 const AppFrame = ({ children }) => {

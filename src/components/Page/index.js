@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import { makeStyles } from '@material-ui/styles';
 
 import styles from './styles';
+
 const useStyles = makeStyles(styles);
 
 const Page = ({ children, disableGutter = false, noHeader = false }) => {
