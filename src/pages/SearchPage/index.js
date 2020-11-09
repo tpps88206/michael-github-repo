@@ -38,7 +38,7 @@ const SearchPage = () => {
     if (footerRef.current) {
       observer.observe(footerRef.current);
     }
-  }, []);
+  }, [items]);
 
   const handleChangeInputValue = event => {
     const inputValue = event.target.value;
@@ -59,16 +59,14 @@ const SearchPage = () => {
   };
 
   const handleObserver = (entries, observer) => {
-    console.log(entries, observer);
-
     entries.forEach(entry => {
       // How much of the target element is currently visible within the root's intersection ratio
       // Setting this can avoid calling duplicated action when element move out the windows (intersectionRatio = 0)
       if (entry.intersectionRatio === 1) {
+        observer.disconnect();
         dispatch(loadMoreRepositories());
       }
     });
-    return false;
   };
 
   return (
@@ -107,12 +105,12 @@ const SearchPage = () => {
                 ))}
             </Grid>
           </div>
-          <div className={classes.footer} ref={footerRef} />
           {isLoading && (
             <div className="my-2 justify-center d-flex">
-              <CircularProgress />
+              <CircularProgress size={80} />
             </div>
           )}
+          <div className={classes.footer} ref={footerRef} />
         </div>
       </PageContent>
     </Page>

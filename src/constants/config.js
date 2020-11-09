@@ -16,5 +16,6 @@ export const WAIT_DURATION = 500;
 export const INTERSECTION_OBSERVER_OPTIONS = {
   root: null, // Viewer
   rootMargin: '0px', // Move the entire lens
-  threshold: [1], // Refers to how much part of the element itself appears in your lens
+  threshold: 1.0, // Refers to how much part of the element itself appears in your lens
 };
+export const LOADING_TIMEOUT = 1000;
