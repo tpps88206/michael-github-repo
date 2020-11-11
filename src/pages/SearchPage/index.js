@@ -77,14 +77,10 @@ const SearchPage = () => {
             <TextField
               id="inputValue"
               label="搜尋"
-              variant="outlined"
               value={inputValue}
               onChange={handleChangeInputValue}
               fullWidth
               margin="normal"
-              InputLabelProps={{
-                shrink: true,
-              }}
             />
           </div>
           <div>

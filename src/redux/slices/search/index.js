@@ -35,7 +35,11 @@ const slice = createSlice({
       const { inputValue } = action.payload;
       state.inputValue = inputValue;
       state.page = 1;
+      state.totalCount = 0;
+      state.items = [];
       state.isLoading = true;
+      state.isMoreData = false;
+      state.lockingCode = 0;
     },
     searchRepositoriesFulfilled: (state, action) => {
       const { response } = action.payload;
@@ -49,10 +53,6 @@ const slice = createSlice({
         });
 
         state.isMoreData = total_count > PER_PAGE;
-      } else {
-        state.totalCount = 0;
-        state.items = [];
-        state.isMoreData = false;
       }
 
       state.isLoading = false;

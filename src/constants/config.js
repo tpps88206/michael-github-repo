@@ -1,4 +1,4 @@
-export const PER_PAGE = 15; // Results per page (max 100)
+export const PER_PAGE = 3; // Results per page (max 100)
 // Creates an object composed of the picked object properties.
 export const SEARCH_DATA_PICKERS = [
   'id',

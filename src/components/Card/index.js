@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import classNames from 'classnames';
+import has from 'lodash/has';
 import upperCase from 'lodash/upperCase';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Divider } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
-import Collapse from '@material-ui/core/Collapse';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import { makeStyles } from '@material-ui/styles';
 
+import { ICONS } from '@/constants/icons';
 import styles from './styles';
 
 const useStyles = makeStyles(styles);
@@ -25,14 +25,32 @@ const useStyles = makeStyles(styles);
 const EnhancedCard = ({ fullName, description, updatedAt, htmlUrl, homepage, language, forks, watchers, ...props }) => {
   const classes = useStyles();
 
-  const [expanded, setExpanded] = useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+  const renderLanguageSection = () => {
+    if (has(ICONS, language)) {
+      return (
+        <React.Fragment>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Language
+          </Typography>
+          <FontAwesomeIcon icon={ICONS[language]} size="3x" />
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <React.Fragment>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Language
+          </Typography>
+          <Typography variant="subtitle1" color="primary" component="p" className={classes.language}>
+            {language ? language : '未知'}
+          </Typography>
+        </React.Fragment>
+      );
+    }
   };
 
   return (
-    <Grid item md={4}>
+    <Grid item lg={4}>
       <Card className={classes.root} {...props}>
         <CardHeader
           avatar={
@@ -41,12 +59,38 @@ const EnhancedCard = ({ fullName, description, updatedAt, htmlUrl, homepage, lan
             </Avatar>
           }
           title={fullName}
-          subheader={updatedAt}
+          subheader={'最後更新：' + updatedAt}
         />
-        <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {description}
-          </Typography>
+        <CardContent className={classes.content}>
+          <div className={classes.description}>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {description}
+            </Typography>
+          </div>
+          <Divider className="my-1" />
+          <div>
+            <Grid container spacing={1}>
+              <Grid item xs={4} className="text-center">
+                {renderLanguageSection()}
+              </Grid>
+              <Grid item xs={4} className="text-center">
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Stars
+                </Typography>
+                <Typography variant="subtitle1" color="primary" component="p" className={classes.starts}>
+                  {watchers}
+                </Typography>
+              </Grid>
+              <Grid item xs={4} className="text-center">
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Forks
+                </Typography>
+                <Typography variant="subtitle1" color="primary" component="p" className={classes.forks}>
+                  {forks}
+                </Typography>
+              </Grid>
+            </Grid>
+          </div>
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
@@ -55,32 +99,7 @@ const EnhancedCard = ({ fullName, description, updatedAt, htmlUrl, homepage, lan
           <IconButton aria-label="share">
             <ShareIcon />
           </IconButton>
-          <IconButton
-            className={classNames(classes.expand, {
-              [classes.expandOpen]: expanded,
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
         </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>語言:{language}</Typography>
-            <Typography paragraph>星星數:{watchers}</Typography>
-            <Typography paragraph>Fork數:{forks}</Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small" color="primary">
-              Share
-            </Button>
-            <Button size="small" color="primary">
-              Learn More
-            </Button>
-          </CardActions>
-        </Collapse>
       </Card>
     </Grid>
   );
