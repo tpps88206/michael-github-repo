@@ -63,7 +63,7 @@ const EnhancedCard = ({ fullName, description, updatedAt, htmlUrl, homepage, lan
         />
         <CardContent className={classes.content}>
           <div className={classes.description}>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant="body2" color="textPrimary" component="p">
               {description}
             </Typography>
           </div>
@@ -93,10 +93,10 @@ const EnhancedCard = ({ fullName, description, updatedAt, htmlUrl, homepage, lan
           </div>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
+          <IconButton aria-label="add to favorites" color="secondary">
             <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="share">
+          <IconButton aria-label="share" color="secondary">
             <ShareIcon />
           </IconButton>
         </CardActions>

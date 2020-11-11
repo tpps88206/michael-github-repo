@@ -7,7 +7,7 @@ const theme = {
       main: primary[500],
     },
     secondary: {
-      main: secondary[500],
+      main: secondary[900],
     },
     error: {
       main: '#FF3B30',

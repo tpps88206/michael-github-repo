@@ -16,7 +16,8 @@ const initialState = {
   page: 1, // current page number
   totalCount: 0, // save number of the total result count
   items: [], // pick specified key of result and save it
-  isLoading: false,
+  isLoadingFromSearch: false,
+  isLoadingFromLoadMore: false,
   isMoreData: false,
   // code = 0 : no action is executing
   // code = 1 : action is executing now
@@ -37,7 +38,7 @@ const slice = createSlice({
       state.page = 1;
       state.totalCount = 0;
       state.items = [];
-      state.isLoading = true;
+      state.isLoadingFromSearch = true;
       state.isMoreData = false;
       state.lockingCode = 0;
     },
@@ -55,18 +56,18 @@ const slice = createSlice({
         state.isMoreData = total_count > PER_PAGE;
       }
 
-      state.isLoading = false;
+      state.isLoadingFromSearch = false;
     },
     searchRepositoriesRejected: (state, action) => {
-      state.isLoading = false;
+      state.isLoadingFromSearch = false;
     },
     searchRepositoriesCancelled: (state, action) => {
-      state.isLoading = false;
+      state.isLoadingFromSearch = false;
     },
     loadMoreRepositories: (state, action) => {
       state.page = state.page + 1;
       state.lockingCode = state.lockingCode + 1;
-      state.isLoading = true;
+      state.isLoadingFromLoadMore = true;
     },
     loadMoreRepositoriesFulfilled: (state, action) => {
       const { response } = action.payload;
@@ -87,17 +88,17 @@ const slice = createSlice({
         state.page = state.page - 1;
       }
       state.lockingCode = state.lockingCode - 1;
-      state.isLoading = false;
+      state.isLoadingFromLoadMore = false;
     },
     loadMoreRepositoriesRejected: (state, action) => {
       state.page = state.page - 1;
       state.lockingCode = state.lockingCode - 1;
-      state.isLoading = false;
+      state.isLoadingFromLoadMore = false;
     },
     loadMoreRepositoriesCancelled: (state, action) => {
       state.page = state.page - 1;
       state.lockingCode = state.lockingCode - 1;
-      state.isLoading = false;
+      state.isLoadingFromLoadMore = false;
     },
   },
 });

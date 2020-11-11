@@ -2,13 +2,17 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import format from 'date-fns/format';
+import isEmpty from 'lodash/isEmpty';
 import shortid from 'shortid';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
 
+import octocat from '@/assets/octocat.png';
+import octocat2 from '@/assets/octocat2.png';
 import Card from '@/components/Card';
 import Page from '@/components/Page';
 import PageContent from '@/components/Page/PageContent';
@@ -25,7 +29,9 @@ const SearchPage = () => {
   const [inputValue, setInputValue] = useState('');
 
   const items = useSelector(state => state.search.items);
-  const isLoading = useSelector(state => state.search.isLoading);
+  const inputValueFromStore = useSelector(state => state.search.inputValue);
+  const isLoadingFromLoadMore = useSelector(state => state.search.isLoadingFromLoadMore);
+  const isLoadingFromSearch = useSelector(state => state.search.isLoadingFromSearch);
 
   const timerRef = useRef(void 0); // Set the timer to watch the gap of user input
   const executedMapRef = useRef(''); // Set the map to record the input value, avoid duplicated searching
@@ -85,7 +91,7 @@ const SearchPage = () => {
           </div>
           <div>
             <Grid container spacing={1} justify="center">
-              {!!items &&
+              {!isEmpty(items) &&
                 items.map(item => (
                   <Card
                     key={shortid.generate()}
@@ -101,7 +107,23 @@ const SearchPage = () => {
                 ))}
             </Grid>
           </div>
-          {isLoading && (
+          {!inputValueFromStore && isEmpty(items) && (
+            <div className="text-center mt-4">
+              <img src={octocat} alt="octocat" height="200" />
+              <Typography variant="h3" color="textSecondary" component="p">
+                想搜尋哪個 Repository？
+              </Typography>
+            </div>
+          )}
+          {inputValueFromStore && isEmpty(items) && !isLoadingFromSearch && (
+            <div className="text-center mt-4">
+              <img src={octocat2} alt="octocat2" height="200" />
+              <Typography variant="h3" color="textSecondary" component="p">
+                抱歉找不到您要的結果
+              </Typography>
+            </div>
+          )}
+          {(isLoadingFromLoadMore || isLoadingFromSearch) && (
             <div className="my-2 justify-center d-flex">
               <CircularProgress size={80} />
             </div>
