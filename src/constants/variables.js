@@ -8,3 +8,7 @@ export const SORT_KEY = 'sort';
 export const ORDER_KEY = 'order';
 export const PER_PAGE_KEY = 'per_page'; // Results per page (max 100)
 export const PAGE_KEY = 'page'; // Page number of the results to fetch.
+export const ERROR_TYPE = 'error';
+export const WARNING_TYPE = 'warning';
+export const INFO_TYPE = 'info';
+export const SUCCESS_TYPE = 'success';

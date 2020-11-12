@@ -1,6 +1,7 @@
 import { ofType } from 'redux-observable';
 
 import concat from 'lodash/concat';
+import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 import { of } from 'rxjs';
@@ -10,6 +11,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import api from '@/api';
 import { PER_PAGE, SEARCH_DATA_PICKERS } from '@/constants/config';
+import { addError } from '@/redux/slices/error';
 
 const initialState = {
   inputValue: '', // input value for searching
@@ -29,9 +31,6 @@ const slice = createSlice({
   name: 'search',
   initialState,
   reducers: {
-    initialize: () => {
-      return initialState;
-    },
     searchRepositories: (state, action) => {
       const { inputValue } = action.payload;
       state.inputValue = inputValue;
@@ -104,7 +103,6 @@ const slice = createSlice({
 });
 
 export const {
-  initialize,
   searchRepositories,
   searchRepositoriesFulfilled,
   searchRepositoriesRejected,
@@ -129,6 +127,15 @@ export const epics = {
       takeUntil(action$.pipe(ofType(searchRepositoriesCancelled.type))),
     );
   },
+  searchRepositoriesRejected: (action$, state$, action) => {
+    const { error } = action.payload;
+    return of(
+      addError({
+        status: get(error, 'xhr.status'),
+        statusText: get(error, 'xhr.statusText'),
+      }),
+    );
+  },
   loadMoreRepositories: (action$, state$, action) => {
     const inputValue = state$.value.search.inputValue;
     const page = state$.value.search.page;
@@ -147,6 +154,15 @@ export const epics = {
       map(res => loadMoreRepositoriesFulfilled(res)),
       catchError(error => of(loadMoreRepositoriesRejected({ type: action.type, error }))),
       takeUntil(action$.pipe(ofType(loadMoreRepositoriesCancelled.type))),
+    );
+  },
+  loadMoreRepositoriesRejected: (action$, state$, action) => {
+    const { error } = action.payload;
+    return of(
+      addError({
+        status: get(error, 'xhr.status'),
+        statusText: get(error, 'xhr.statusText'),
+      }),
     );
   },
 };
