@@ -3,49 +3,61 @@
 exports[`renders SearchPage with snapshot 1`] = `
 <DocumentFragment>
   <main
-    class="makeStyles-root-5 px-3 mt-9"
+    class="makeStyles-root-7 px-3 mt-9"
   >
     <section
-      class="makeStyles-root-6 "
+      class="makeStyles-root-8 "
     >
       <div
-        class="makeStyles-root-4"
+        class="makeStyles-root-5"
       >
         <div>
-          <form
-            autocomplete="off"
-            novalidate=""
+          <div
+            class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
           >
-            <div
-              class="MuiFormControl-root MuiTextField-root"
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+              data-shrink="false"
+              for="inputValue"
+              id="inputValue-label"
             >
-              <label
-                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-                data-shrink="false"
-                for="search-keywords"
-                id="search-keywords-label"
-              >
-                Keywords
-              </label>
-              <div
-                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-              >
-                <input
-                  aria-invalid="false"
-                  class="MuiInputBase-input MuiInput-input"
-                  id="search-keywords"
-                  type="text"
-                  value=""
-                />
-              </div>
+              搜尋
+            </label>
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiInput-input"
+                id="inputValue"
+                type="text"
+                value=""
+              />
             </div>
-          </form>
+          </div>
         </div>
         <div>
           <div
             class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-justify-xs-center"
           />
         </div>
+        <div
+          class="text-center mt-4"
+        >
+          <img
+            alt="octocat"
+            height="200"
+            src="octocat.png"
+          />
+          <p
+            class="MuiTypography-root MuiTypography-h3 MuiTypography-colorTextSecondary"
+          >
+            想搜尋哪個 Repository？
+          </p>
+        </div>
+        <div
+          class="makeStyles-footer-6"
+        />
       </div>
     </section>
   </main>

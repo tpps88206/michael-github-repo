@@ -17,25 +17,42 @@ const slice = createSlice({
   reducers: {
     addError: (state, action) => {
       const { status, statusText } = action.payload;
-      switch (status) {
-        case ERRORS.mapCustomErrorCode.RATE_LIMIT_EXCEEDED:
-          if (statusText === ERRORS.RATE_LIMIT_EXCEEDED) {
-            return {
-              type: ERROR_TYPE,
-              message: ERRORS.customErrorMessage[ERRORS.messageToEnum[statusText]],
-            };
-          }
-          break;
-        case ERRORS.mapCustomErrorCode.UNPROCESSABLE_ENTITY:
-          if (statusText === ERRORS.UNPROCESSABLE_ENTITY) {
-            return {
-              type: ERROR_TYPE,
-              message: ERRORS.customErrorMessage[ERRORS.messageToEnum[statusText]],
-            };
-          }
-          break;
-        default:
-          break;
+
+      if (statusText === ERRORS.UNPROCESSABLE_ENTITY && status === ERRORS.mapCustomErrorCode.UNPROCESSABLE_ENTITY) {
+        return {
+          type: ERROR_TYPE,
+          message: ERRORS.customErrorMessage[ERRORS.messageToEnum[statusText]],
+        };
+      }
+      if (statusText === ERRORS.RATE_LIMIT_EXCEEDED && status === ERRORS.mapCustomErrorCode.RATE_LIMIT_EXCEEDED) {
+        return {
+          type: ERROR_TYPE,
+          message: ERRORS.customErrorMessage[ERRORS.messageToEnum[statusText]],
+        };
+      }
+      if (statusText === ERRORS.NOT_MODIFIED && status === ERRORS.mapCustomErrorCode.NOT_MODIFIED) {
+        return {
+          type: ERROR_TYPE,
+          message: ERRORS.customErrorMessage.SERVER_ERROR,
+        };
+      }
+      if (statusText === ERRORS.FORBIDDEN && status === ERRORS.mapCustomErrorCode.FORBIDDEN) {
+        return {
+          type: ERROR_TYPE,
+          message: ERRORS.customErrorMessage.SERVER_ERROR,
+        };
+      }
+      if (statusText === ERRORS.SERVICE_UNAVAILABLE && status === ERRORS.mapCustomErrorCode.SERVICE_UNAVAILABLE) {
+        return {
+          type: ERROR_TYPE,
+          message: ERRORS.customErrorMessage.SERVER_ERROR,
+        };
+      }
+      if (statusText === ERRORS.NOT_FOUND && status === ERRORS.mapCustomErrorCode.NOT_FOUND) {
+        return {
+          type: ERROR_TYPE,
+          message: ERRORS.customErrorMessage.SERVER_ERROR,
+        };
       }
     },
     removeError: () => {

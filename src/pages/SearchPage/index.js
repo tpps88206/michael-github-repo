@@ -40,9 +40,11 @@ const SearchPage = () => {
   useEffect(() => {
     // initialize IntersectionObserver
     // and attaching to Load More div
-    const observer = new IntersectionObserver(handleObserver, INTERSECTION_OBSERVER_OPTIONS);
-    if (footerRef.current) {
-      observer.observe(footerRef.current);
+    if (!isEmpty(items)) {
+      const observer = new IntersectionObserver(handleObserver, INTERSECTION_OBSERVER_OPTIONS);
+      if (footerRef.current) {
+        observer.observe(footerRef.current);
+      }
     }
   }, [items]);
 

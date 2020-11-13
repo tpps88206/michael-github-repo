@@ -4,7 +4,7 @@ import { render } from '@/utils/test-utils';
 import SearchPage from './index';
 
 it('renders SearchPage without crashing', () => {
-  const div = document.createElement('div');
+  const div = document.createElement('main');
   render(<SearchPage />, div);
 });
 

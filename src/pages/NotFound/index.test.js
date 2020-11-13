@@ -4,7 +4,7 @@ import { render } from '@/utils/test-utils';
 import NotFound from './index';
 
 it('renders NotFound without crashing', () => {
-  const div = document.createElement('div');
+  const div = document.createElement('main');
   render(<NotFound />, div);
 });
 

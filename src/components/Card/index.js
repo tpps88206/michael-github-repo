@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import has from 'lodash/has';
 import upperCase from 'lodash/upperCase';
@@ -14,16 +15,44 @@ import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ShareIcon from '@material-ui/icons/Share';
 import { makeStyles } from '@material-ui/styles';
 
 import { ICONS } from '@/constants/icons';
+import { SUCCESS_TYPE } from '@/constants/variables';
+import { addNotification } from '@/redux/slices/notification';
 import styles from './styles';
 
 const useStyles = makeStyles(styles);
 
 const EnhancedCard = ({ fullName, description, updatedAt, htmlUrl, homepage, language, forks, watchers, ...props }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const [favorite, setFavorite] = useState(false);
+
+  const handleClickFavoriteButton = () => {
+    setFavorite(favorite => !favorite);
+  };
+
+  const handleClickShareButton = () => {
+    const element = document.createElement('textarea');
+    element.value = htmlUrl;
+    document.body.appendChild(element);
+    element.select();
+    document.execCommand('copy');
+    document.body.removeChild(element);
+
+    dispatch(
+      addNotification({
+        notification: {
+          severity: SUCCESS_TYPE,
+          message: '已將網址複製到剪貼簿上',
+        },
+      }),
+    );
+  };
 
   const renderLanguageSection = () => {
     if (has(ICONS, language)) {
@@ -93,10 +122,16 @@ const EnhancedCard = ({ fullName, description, updatedAt, htmlUrl, homepage, lan
           </div>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites" color="secondary">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share" color="secondary">
+          {favorite ? (
+            <IconButton aria-label="remove from favorites" color="secondary" onClick={handleClickFavoriteButton}>
+              <FavoriteIcon />
+            </IconButton>
+          ) : (
+            <IconButton aria-label="add to favorites" color="secondary" onClick={handleClickFavoriteButton}>
+              <FavoriteBorderIcon />
+            </IconButton>
+          )}
+          <IconButton aria-label="share" color="secondary" onClick={handleClickShareButton}>
             <ShareIcon />
           </IconButton>
         </CardActions>
