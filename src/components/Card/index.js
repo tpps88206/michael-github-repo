@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import has from 'lodash/has';
@@ -13,11 +13,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ShareIcon from '@material-ui/icons/Share';
-import { makeStyles } from '@material-ui/styles';
 
 import { ICONS } from '@/constants/icons';
 import { SUCCESS_TYPE } from '@/constants/variables';
@@ -84,7 +84,7 @@ const EnhancedCard = ({ fullName, description, updatedAt, htmlUrl, homepage, lan
         <CardHeader
           avatar={
             <Avatar aria-label="recipe" className={classes.avatar}>
-              {upperCase(fullName.substring(0, 1))}
+              {fullName && upperCase(fullName.substring(0, 1))}
             </Avatar>
           }
           title={fullName}
@@ -140,4 +140,4 @@ const EnhancedCard = ({ fullName, description, updatedAt, htmlUrl, homepage, lan
   );
 };
 
-export default EnhancedCard;
+export default memo(EnhancedCard);

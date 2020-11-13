@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Card with snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiGrid-root MuiGrid-item MuiGrid-grid-lg-4"
+  >
+    <div
+      class="MuiPaper-root MuiCard-root makeStyles-root-8 MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiCardHeader-root"
+      >
+        <div
+          class="MuiCardHeader-avatar"
+        >
+          <div
+            aria-label="recipe"
+            class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-9 MuiAvatar-colorDefault"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiAvatar-fallback"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="MuiCardHeader-content"
+        >
+          <span
+            class="MuiTypography-root MuiCardHeader-subheader MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+          >
+            最後更新：undefined
+          </span>
+        </div>
+      </div>
+      <div
+        class="MuiCardContent-root makeStyles-content-11"
+      >
+        <div
+          class="makeStyles-description-10"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
+          />
+        </div>
+        <hr
+          class="MuiDivider-root my-1"
+        />
+        <div>
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1"
+          >
+            <div
+              class="MuiGrid-root text-center MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+              >
+                Language
+              </p>
+              <p
+                class="MuiTypography-root makeStyles-language-14 MuiTypography-subtitle1 MuiTypography-colorPrimary"
+              >
+                未知
+              </p>
+            </div>
+            <div
+              class="MuiGrid-root text-center MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+              >
+                Stars
+              </p>
+              <p
+                class="MuiTypography-root makeStyles-starts-12 MuiTypography-subtitle1 MuiTypography-colorPrimary"
+              />
+            </div>
+            <div
+              class="MuiGrid-root text-center MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+              >
+                Forks
+              </p>
+              <p
+                class="MuiTypography-root makeStyles-forks-13 MuiTypography-subtitle1 MuiTypography-colorPrimary"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiCardActions-root"
+      >
+        <button
+          aria-label="add to favorites"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          aria-label="share"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

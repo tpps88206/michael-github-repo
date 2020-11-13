@@ -7,9 +7,9 @@ import shortid from 'shortid';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/styles';
 
 import octocat from '@/assets/octocat.png';
 import octocat2 from '@/assets/octocat2.png';
