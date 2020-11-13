@@ -1,8 +1,7 @@
-import React, { memo, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import has from 'lodash/has';
-import upperCase from 'lodash/upperCase';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Divider } from '@material-ui/core';
@@ -22,6 +21,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import { ICONS } from '@/constants/icons';
 import { SUCCESS_TYPE } from '@/constants/variables';
 import { addNotification } from '@/redux/slices/notification';
+import { generateAvatarCharacter } from '@/utils';
 import styles from './styles';
 
 const useStyles = makeStyles(styles);
@@ -84,7 +84,7 @@ const EnhancedCard = ({ fullName, description, updatedAt, htmlUrl, homepage, lan
         <CardHeader
           avatar={
             <Avatar aria-label="recipe" className={classes.avatar}>
-              {fullName && upperCase(fullName.substring(0, 1))}
+              {generateAvatarCharacter(fullName)}
             </Avatar>
           }
           title={fullName}
@@ -140,4 +140,4 @@ const EnhancedCard = ({ fullName, description, updatedAt, htmlUrl, homepage, lan
   );
 };
 
-export default memo(EnhancedCard);
+export default EnhancedCard;

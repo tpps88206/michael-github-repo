@@ -9,6 +9,7 @@ import { addNotification } from '@/redux/slices/notification';
 const initialState = {
   type: '',
   message: '',
+  rateLimit: false,
 };
 
 const slice = createSlice({
@@ -28,6 +29,7 @@ const slice = createSlice({
         return {
           type: ERROR_TYPE,
           message: ERRORS.customErrorMessage[ERRORS.messageToEnum[statusText]],
+          rateLimit: true,
         };
       }
       if (statusText === ERRORS.NOT_MODIFIED && status === ERRORS.mapCustomErrorCode.NOT_MODIFIED) {

@@ -16,7 +16,13 @@ import octocat2 from '@/assets/octocat2.png';
 import Card from '@/components/Card';
 import Page from '@/components/Page';
 import PageContent from '@/components/Page/PageContent';
-import { INTERSECTION_OBSERVER_OPTIONS, UPDATED_TIME_FORMAT, WAIT_DURATION } from '@/constants/config';
+import {
+  INTERSECTION_OBSERVER_OPTIONS,
+  RATE_LIMIT_DURATION,
+  UPDATED_TIME_FORMAT,
+  WAIT_DURATION,
+} from '@/constants/config';
+import { removeError } from '@/redux/slices/error';
 import { loadMoreRepositories, searchRepositories } from '@/redux/slices/search';
 import styles from './styles';
 
@@ -32,21 +38,36 @@ const SearchPage = () => {
   const inputValueFromStore = useSelector(state => state.search.inputValue);
   const isLoadingFromLoadMore = useSelector(state => state.search.isLoadingFromLoadMore);
   const isLoadingFromSearch = useSelector(state => state.search.isLoadingFromSearch);
+  const rateLimit = useSelector(state => state.error.rateLimit);
 
   const timerRef = useRef(void 0); // Set the timer to watch the gap of user input
   const executedMapRef = useRef(''); // Set the map to record the input value, avoid duplicated searching
   const footerRef = useRef(null); // Add footer element reference
 
   useEffect(() => {
-    // initialize IntersectionObserver
-    // and attaching to Load More div
     if (!isEmpty(items)) {
-      const observer = new IntersectionObserver(handleObserver, INTERSECTION_OBSERVER_OPTIONS);
-      if (footerRef.current) {
-        observer.observe(footerRef.current);
-      }
+      initObserver();
     }
   }, [items]);
+
+  useEffect(() => {
+    // If we get rate limit from API
+    // We will wait ONE min and create observer with lazy load after waiting
+    if (rateLimit) {
+      setTimeout(() => {
+        dispatch(removeError());
+        initObserver();
+      }, RATE_LIMIT_DURATION);
+    }
+  }, [rateLimit]);
+
+  const initObserver = () => {
+    // Initialize IntersectionObserver and attaching to Load More div
+    const observer = new IntersectionObserver(handleObserver, INTERSECTION_OBSERVER_OPTIONS);
+    if (footerRef.current) {
+      observer.observe(footerRef.current);
+    }
+  };
 
   const handleChangeInputValue = event => {
     const inputValue = event.target.value;

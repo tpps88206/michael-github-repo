@@ -19,3 +19,5 @@ export const INTERSECTION_OBSERVER_OPTIONS = {
   threshold: 1.0, // Refers to how much part of the element itself appears in your lens
 };
 export const LOADING_TIMEOUT = 1000;
+export const NOTIFICATION_AUTO_HIDE_DURATION = 5000;
+export const RATE_LIMIT_DURATION = 60000;
