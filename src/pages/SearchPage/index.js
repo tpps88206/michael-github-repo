@@ -90,17 +90,19 @@ const SearchPage = () => {
 
     const queryValue = generateQueryParams(params);
 
-    // Start lazy input
+    // Reset the time out and then reset it at the below
     if (timerRef.current) {
       window.clearTimeout(timerRef.current);
     }
-
+    // Set the time out to avoid triggering the event frequently
     timerRef.current = window.setTimeout(async () => {
       timerRef.current = void 0;
+      // Break the function if the value is empty or had been searched before
       if (!queryValue || executedMapRef.current === queryValue) {
         return;
       }
-      executedMapRef.current = queryValue; // Record the current input value in the map
+      // Record the current input value in the map
+      executedMapRef.current = queryValue;
       dispatch(searchRepositories({ queryValue }));
     }, WAIT_DURATION);
   }, [inputValue, sortBy, orderBy]);
@@ -117,7 +119,7 @@ const SearchPage = () => {
   }, [rateLimit]);
 
   const initObserver = () => {
-    // Initialize IntersectionObserver and attaching to Load More div
+    // Initialize IntersectionObserver and attaching to the footer div
     const observer = new IntersectionObserver(handleObserver, INTERSECTION_OBSERVER_OPTIONS);
     if (footerRef.current) {
       observer.observe(footerRef.current);
