@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import has from 'lodash/has';
@@ -140,4 +140,4 @@ const EnhancedCard = ({ fullName, description, updatedAt, htmlUrl, homepage, lan
   );
 };
 
-export default EnhancedCard;
+export default memo(EnhancedCard);

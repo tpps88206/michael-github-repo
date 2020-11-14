@@ -17,7 +17,7 @@
   },
   "plugins": ["import", "jsx-a11y", "prettier", "react-hooks", "react", "simple-import-sort"],
   "rules": {
-    "no-console": [2, { "allow": ["warn", "error"] }],
+    "no-console": [0, { "allow": ["warn", "error"] }],
     "no-unused-vars": 2,
     "object-shorthand": 2,
     // plugin rules, sort by key name

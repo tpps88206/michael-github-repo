@@ -3,36 +3,166 @@
 exports[`renders SearchPage with snapshot 1`] = `
 <DocumentFragment>
   <main
-    class="makeStyles-root-7 px-3 mt-9"
+    class="makeStyles-root-9 px-3 mt-9"
   >
     <section
-      class="makeStyles-root-8 "
+      class="makeStyles-root-10 "
     >
-      <div
-        class="makeStyles-root-5"
-      >
-        <div>
+      <div>
+        <div
+          class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1"
+        >
           <div
-            class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6"
           >
-            <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-              data-shrink="false"
-              for="inputValue"
-              id="inputValue-label"
-            >
-              搜尋
-            </label>
-            <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
-            >
-              <input
-                aria-invalid="false"
-                class="MuiInputBase-input MuiInput-input"
-                id="inputValue"
-                type="text"
-                value=""
-              />
+            <div>
+              <div
+                class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                  data-shrink="false"
+                  for="inputValue"
+                  id="inputValue-label"
+                >
+                  輸入 Repository 關鍵字
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input"
+                    id="inputValue"
+                    type="text"
+                    value=""
+                  />
+                  <fieldset
+                    aria-hidden="true"
+                    class="PrivateNotchedOutline-root-11 MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="PrivateNotchedOutline-legendLabelled-13"
+                    >
+                      <span>
+                        輸入 Repository 關鍵字
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6"
+          >
+            <div>
+              <div
+                class="MuiFormControl-root mr-1 MuiFormControl-marginNormal"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+                  data-shrink="true"
+                  id="sort-by-label"
+                >
+                  排序類型
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+                >
+                  <div
+                    aria-haspopup="listbox"
+                    aria-labelledby="sort-by-label sort-by"
+                    class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+                    id="sort-by"
+                    role="button"
+                    tabindex="0"
+                  >
+                    不指定
+                  </div>
+                  <input
+                    aria-hidden="true"
+                    class="MuiSelect-nativeInput"
+                    tabindex="-1"
+                    value="不指定"
+                  />
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M7 10l5 5 5-5z"
+                    />
+                  </svg>
+                  <fieldset
+                    aria-hidden="true"
+                    class="PrivateNotchedOutline-root-11 MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="PrivateNotchedOutline-legendLabelled-13 PrivateNotchedOutline-legendNotched-14"
+                    >
+                      <span>
+                        排序類型
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+              <div
+                class="MuiFormControl-root MuiFormControl-marginNormal"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+                  data-shrink="true"
+                  id="order-by-label"
+                >
+                  排序方式
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+                >
+                  <div
+                    aria-haspopup="listbox"
+                    aria-labelledby="order-by-label order-by"
+                    class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+                    id="order-by"
+                    role="button"
+                    tabindex="0"
+                  >
+                    不指定
+                  </div>
+                  <input
+                    aria-hidden="true"
+                    class="MuiSelect-nativeInput"
+                    tabindex="-1"
+                    value="不指定"
+                  />
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M7 10l5 5 5-5z"
+                    />
+                  </svg>
+                  <fieldset
+                    aria-hidden="true"
+                    class="PrivateNotchedOutline-root-11 MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="PrivateNotchedOutline-legendLabelled-13 PrivateNotchedOutline-legendNotched-14"
+                    >
+                      <span>
+                        排序方式
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -56,7 +186,7 @@ exports[`renders SearchPage with snapshot 1`] = `
           </p>
         </div>
         <div
-          class="makeStyles-footer-6"
+          class="makeStyles-footer-8"
         />
       </div>
     </section>

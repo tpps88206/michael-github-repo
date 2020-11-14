@@ -14,7 +14,7 @@ import { PER_PAGE, SEARCH_DATA_PICKERS } from '@/constants/config';
 import { addError } from '@/redux/slices/error';
 
 const initialState = {
-  inputValue: '', // input value for searching
+  queryValue: '', // input value for searching
   page: 1, // current page number
   totalCount: 0, // save number of the total result count
   items: [], // pick specified key of result and save it
@@ -32,8 +32,8 @@ const slice = createSlice({
   initialState,
   reducers: {
     searchRepositories: (state, action) => {
-      const { inputValue } = action.payload;
-      state.inputValue = inputValue;
+      const { queryValue } = action.payload;
+      state.queryValue = queryValue;
       state.page = 1;
       state.totalCount = 0;
       state.items = [];
@@ -115,13 +115,13 @@ export const {
 
 export const epics = {
   searchRepositories: (action$, state$, action) => {
-    const { inputValue, page } = action.payload;
+    const { queryValue, page } = action.payload;
 
-    if (!inputValue) {
-      return of(searchRepositoriesRejected({ type: action.type }));
+    if (!queryValue) {
+      return of(searchRepositoriesCancelled({ type: action.type }));
     }
 
-    return api.searchRepositories({ inputValue, page }).pipe(
+    return api.searchRepositories({ queryValue, page }).pipe(
       map(res => searchRepositoriesFulfilled(res)),
       catchError(error => of(searchRepositoriesRejected({ type: action.type, error }))),
       takeUntil(action$.pipe(ofType(searchRepositoriesCancelled.type))),
@@ -137,20 +137,20 @@ export const epics = {
     );
   },
   loadMoreRepositories: (action$, state$, action) => {
-    const inputValue = state$.value.search.inputValue;
+    const queryValue = state$.value.search.queryValue;
     const page = state$.value.search.page;
     const isMoreData = state$.value.search.isMoreData;
     const lockingCode = state$.value.search.lockingCode;
 
-    if (!inputValue || !isMoreData) {
-      return of(loadMoreRepositoriesRejected({ type: action.type }));
+    if (!queryValue || !isMoreData) {
+      return of(loadMoreRepositoriesCancelled({ type: action.type }));
     }
 
     if (lockingCode > 1) {
-      return of(loadMoreRepositoriesRejected({ type: action.type }));
+      return of(loadMoreRepositoriesCancelled({ type: action.type }));
     }
 
-    return api.searchRepositories({ inputValue, page }).pipe(
+    return api.searchRepositories({ queryValue, page }).pipe(
       map(res => loadMoreRepositoriesFulfilled(res)),
       catchError(error => of(loadMoreRepositoriesRejected({ type: action.type, error }))),
       takeUntil(action$.pipe(ofType(loadMoreRepositoriesCancelled.type))),

@@ -2,15 +2,15 @@ import { ajax } from 'rxjs/ajax';
 
 import { common } from '@/config';
 import { PER_PAGE } from '@/constants/config';
-import { PAGE_KEY, PER_PAGE_KEY, QUERY_KEY } from '@/constants/variables';
+import { PAGE_KEY, PER_PAGE_KEY } from '@/constants/variables';
 import { getHeaders } from './utils';
 
-export const searchRepositories = ({ inputValue, page }) => {
+export const searchRepositories = ({ queryValue, page }) => {
   // Set API path
   let path = '/search/repositories';
 
   // SeT the keywords for query
-  path = `${path}?${QUERY_KEY}=${inputValue}`;
+  path = `${path}?${queryValue}`;
 
   // Set page number of the results to fetch.
   if (page) {
