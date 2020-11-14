@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders SearchPage with snapshot 1`] = `
+exports[`test Search Page renders SearchPage with snapshot 1`] = `
 <DocumentFragment>
   <main
     class="makeStyles-root-9 px-3 mt-9"

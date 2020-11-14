@@ -134,7 +134,7 @@ const SearchPage = () => {
   const handleObserver = (entries, observer) => {
     entries.forEach(entry => {
       // How much of the target element is currently visible within the root's intersection ratio
-      // Setting this can avoid calling duplicated action when element move out the windows (intersectionRatio = 0)
+      // Setting this can avoid calling duplicated action when element move out the windows
       if (entry.intersectionRatio === 1) {
         observer.disconnect();
         dispatch(loadMoreRepositories());

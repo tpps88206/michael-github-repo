@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Card with snapshot 1`] = `
+exports[`test Card renders Card with snapshot 1`] = `
 <DocumentFragment>
   <div
     class="MuiGrid-root MuiGrid-item MuiGrid-grid-lg-4"

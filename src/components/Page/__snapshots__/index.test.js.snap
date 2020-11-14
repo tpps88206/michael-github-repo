@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Page with snapshot 1`] = `
+exports[`test Page renders Page with snapshot 1`] = `
 <DocumentFragment>
   <main
     class="makeStyles-root-2 px-3 mt-9"

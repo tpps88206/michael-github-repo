@@ -6,26 +6,44 @@
 [![Codecov](https://img.shields.io/codecov/c/github/tpps88206/github-repo)](https://codecov.io/gh/tpps88206/github-repo)
 ![License](https://img.shields.io/github/license/tpps88206/github-repo)
 
-## Online page
+* Github Page: [https://tpps88206.github.io/github-repo/](https://tpps88206.github.io/github-repo/)
 
-https://tpps88206.github.io/github-repo/
+## Demo
 
-## Setup
+* Desktop browser
+
+![](docs/desktop_demo.gif)
+
+* Mobile browser
+
+![](docs/mobile_demo.gif)
+
+## Setup and develop at local
+
+* Clone the repository
 
 ```bash
 $ git clone https://github.com/tpps88206/github-repo.git
 $ cd github-repo/
+```
+
+* Install dependency and start with YARN
+
+```bash
 $ yarn install
 $ yarn start
 ```
 
-## Demo
+* With NPM
 
-![](docs/demo.gif)
+```bash
+$ npm install
+$ npm run start
+```
 
 ## Features
 
-#### Search Github Repository with GitHub REST API
+#### Search github repository with GitHub REST API
 
 * src/api/search.js
 
@@ -57,7 +75,7 @@ const initObserver = () => {
 const handleObserver = (entries, observer) => {
   entries.forEach(entry => {
     // How much of the target element is currently visible within the root's intersection ratio
-    // Setting this can avoid calling duplicated action when element move out the windows (intersectionRatio = 0)
+    // Setting this can avoid calling duplicated action when element move out the windows
     if (entry.intersectionRatio === 1) {
       observer.disconnect();
       dispatch(loadMoreRepositories());
@@ -136,8 +154,11 @@ return (
 * Use [Husky](https://typicode.github.io/husky/#/) to handle pre-commit event.
 * All icons are using [Material Icon](https://material-ui.com/components/material-icons/) and [Font Awesome](https://fontawesome.com/).
 * Define coding style with [Prettier](https://prettier.io/) and **Eslint**.
+* Implement **Responsive Web Design**
 
-## Unit Test Report
+## Unit Test report
+
+![](docs/unit_test_report.png)
 
 ## Reference
 
