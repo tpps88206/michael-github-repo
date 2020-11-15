@@ -53,7 +53,7 @@
     ```bash
     $ npm install
     $ npm run start
-    ```
+    ```  
 
 ## Technologies
 
@@ -176,6 +176,7 @@
 .
 ├─── .github
 │   └─── workflows                      # The config of Github action
+├─── docker                         # Build the Docker container with custom Dockerfile
 ├─── docs                           # The necessary files of README.md
 ├─── public
 ├─── src
