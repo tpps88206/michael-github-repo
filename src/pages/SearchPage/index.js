@@ -62,12 +62,7 @@ const SearchPage = () => {
   const footerRef = useRef(null); // Add footer element reference
 
   useEffect(() => {
-    if (!isEmpty(items)) {
-      initObserver();
-    }
-  }, [items]);
-
-  useEffect(() => {
+    // Merge query key and value
     const params = [];
     if (inputValue) {
       params.push({
@@ -94,6 +89,7 @@ const SearchPage = () => {
     if (timerRef.current) {
       window.clearTimeout(timerRef.current);
     }
+
     // Set the time out to avoid triggering the event frequently
     timerRef.current = window.setTimeout(async () => {
       timerRef.current = void 0;
@@ -106,6 +102,12 @@ const SearchPage = () => {
       dispatch(searchRepositories({ queryValue }));
     }, WAIT_DURATION);
   }, [inputValue, sortBy, orderBy]);
+
+  useEffect(() => {
+    if (!isEmpty(items)) {
+      initObserver();
+    }
+  }, [items]);
 
   useEffect(() => {
     // If we get rate limit from API
@@ -231,7 +233,7 @@ const SearchPage = () => {
             <div className="text-center mt-4">
               <img src={octocat2} alt="octocat2" height="200" />
               <Typography variant="h3" color="textSecondary" component="p">
-                抱歉找不到您要的結果
+                抱歉沒有結果，請稍後再試
               </Typography>
             </div>
           )}
