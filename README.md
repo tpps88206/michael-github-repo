@@ -22,7 +22,7 @@
 
 * Github page
 
-    [https://tpps88206.github.io/github-repo/](https://tpps88206.github.io/github-repo/)
+    [https://tpps88206.github.io/michael-github-repo/](https://tpps88206.github.io/michael-github-repo/)
 
 * Desktop browser
 
@@ -37,8 +37,8 @@
 * Clone the repository
 
     ```bash
-    $ git clone https://github.com/tpps88206/github-repo.git
-    $ cd github-repo/
+    $ git clone https://github.com/tpps88206/michael-github-repo.git
+    $ cd michael-github-repo/
     ```
 
 * Install dependency and start with YARN
